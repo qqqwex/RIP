@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Компьютер{% endblock %}
+
+{% block content %}
+    <div>
+        <h1>Дисплеи:</h1>
+    </div>
+    <ul>
+        {% for disp in data.display %}
+            <li>Матрица:  <i>{{ disp.matrix_type }} </i></li>
+            <li>Цена: <i>{{ disp.diagonal }}</i></li>
+            <li>Модель компьютера: <i>{{ disp.pc.name }}</i></li>
+            <br>
+        {% empty %}
+            <li>Список пуст</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
