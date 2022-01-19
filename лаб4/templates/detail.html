@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Вид: {% endblock %}
+
+{% block content %}
+<ul>
+    <div style="text-align: center">
+    {% if data.id == 1 %}
+         <img src="{% static 'images/plombir.jpg' %}" style="width:300px">
+    {% elif data.id == 2 %}
+         <img src="{% static 'images/chocolate.jpg' %}" style="width:300px">
+    {% else %}
+         <img src="{% static 'images/strawberry.jpg' %}" style="width:300px">
+    {% endif %}
+    </div>
+    <table border="1" width="100%" cellpadding="5">
+        <tr>
+            <th> Название</th>
+            <th> Ингредиенты </th>
+            <th> Гост </th>
+            <th> Цена </th>
+        </tr>
+        <tr>
+            {% for icecream in data.icecream_info %}
+              {% if icecream.id == data.id %}
+                <td>{{ icecream.title }}</td>
+                <td>{{ icecream.ingridients }}</td>
+                <td> {{ icecream.standart }}</td>
+                <td>{{ icecream.price }}</td>
+              {% endif %}
+           {% endfor %}
+        </tr>
+    </table>
+    <div style="text-align: center">
+        <li><a href="{% url 'home_url' %}">{{ 'Home' }}</a> </li>
+    </div>
+</ul>
+{% endblock %}
